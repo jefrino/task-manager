@@ -1,0 +1,21 @@
+# Netlify Configuration for TaskFlow Pro
+
+[build]
+  # Directory containing the static website assets
+  publish = "static"
+
+# Optional: Netlify Reverse Proxy
+# When you deploy your backend (e.g. to Render, Railway, Fly.io, or VPS),
+# replace https://your-backend.onrender.com with your actual backend URL.
+# Netlify will transparently proxy all /api requests without CORS issues.
+[[redirects]]
+  from = "/api/*"
+  to = "https://your-backend.onrender.com/api/:splat"
+  status = 200
+  force = true
+
+# Single Page Application (SPA) routing fallback
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
